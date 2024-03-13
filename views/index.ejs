@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="content">
+
+        <form action="/save" method="post">
+            <input type="text" name="id" placeholder="Nhập id.." />
+            <br>
+            <input type="text" name="name" placeholder="Nhập name.." />
+            <br>
+            <input type="text" name="course_type" placeholder="Nhập course_type.." />
+            <br>
+            <input type="text" name="semester" placeholder="Nhập semester.." />
+            <br>
+            <input type="text" name="department" placeholder="Nhập department.." />
+            <br>
+            <input type="file" name="image" accept="image/*"/>
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+
+        <form action="/delete" method="post" enctype="multipart/form-data">
+            <table>
+                <caption>Danh sách các môn học</caption>
+    
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Tên môn học</th>
+                        <th>Loại môn học</th>
+                        <th>Học kỳ</th>
+                        <th>Khoa</th>
+                        <th>Hình ảnh</th>
+                        <th>Chọn</th>
+                    </tr>
+                </thead>
+    
+                <tbody>
+                    <% for(let i = 0; i < data.length; i++) { %>
+                        <tr>
+                            <td><%= data[i].id %></td>
+                            <td><%= data[i].name %></td>
+                            <td><%= data[i].course_type %></td>
+                            <td><%= data[i].semester %></td>
+                            <td><%= data[i].department %></td>
+                            <td><img src="<% data[i].image %>" alt="avt_<%= data[i].id %>" /></td>
+                            <td>
+                                <input type="checkbox" />
+                            </td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+            <button type="submit">Delete</button>
+        </form>
+
+        
+    </div>
+</body>
+</html>
